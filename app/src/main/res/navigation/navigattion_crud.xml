@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigattion_crud"
+    app:startDestination="@id/nav_login">
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.seducation.Tela_login"
+        android:label="fragment_tela_login"
+        tools:layout="@layout/fragment_tela_login" >
+        <action
+            android:id="@+id/action_nav_login_to_nav_cadastro"
+            app:destination="@id/nav_cadastro" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_cadastro"
+        android:name="com.example.seducation.Tela_cadastro"
+        android:label="fragment_tela_cadastro"
+        tools:layout="@layout/fragment_tela_cadastro" >
+        <action
+            android:id="@+id/action_nav_cadastro_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+</navigation>
