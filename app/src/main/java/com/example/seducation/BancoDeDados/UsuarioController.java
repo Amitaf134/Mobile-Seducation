@@ -10,7 +10,7 @@ public class UsuarioController{
     private Context contexto;
     private static UsuarioController instancia = null;
 
-    private UsuarioController(Context contexto)
+    public UsuarioController(Context contexto)
     {
         this.contexto = contexto;
         usuarios = new ArrayList<>();
@@ -31,11 +31,17 @@ public class UsuarioController{
             return false;
     }
 
-    public List<Usuario> buscarUsuario(){
+    public int buscarUsuario(String email){
+        int valor;
         Usuario user = new Usuario();
         UsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio(contexto);
-        List<Usuario> usuarios = usuarioRepositorio.buscarUsuario(user.getEmail());
-        return usuarios;
+        List<Usuario> usuarios = usuarioRepositorio.buscarUsuario(email);
+         if(usuarios.size() >0){
+             valor = 1;
+         }else{
+             valor = 0;
+         }
+         return valor;
     }
 
     public Usuario buscarPorPosicao(int posicao)

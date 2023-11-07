@@ -70,12 +70,13 @@ public class TelaInicial extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
        //fazer essa merda
-        /*PostagensController postagensController = PostagensController.getInstancia(this);
+        PostagensController postagensController = PostagensController.getInstancia(this);
 
-       ListView listView = findViewById(R.id.list_post);
+        ListView listView = findViewById(R.id.list_post);
         listaPostagemAdapter = new ListaPostagemAdapter(this);
         listView.setAdapter(listaPostagemAdapter);
-&*/
+        btSair = findViewById(R.id.action_sair);
+
         FloatingActionButton btPost = findViewById(R.id.postagem);
         btPost.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -85,8 +86,15 @@ public class TelaInicial extends AppCompatActivity {
         }
     });
 
+            btSair.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(TelaInicial.this, TelaLogin.class);
+                    startActivity(i);
+                }
+            });
+        }
 
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,15 +103,17 @@ public class TelaInicial extends AppCompatActivity {
         return true;
     }
 
+
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_tela_inicial);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-  /*  protected void onResume() {
+   protected void onResume() {
         super.onResume();
         listaPostagemAdapter.atualizarLista();
-    }*/
+    }
 
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PostagemRepositorio {
     private DBHelperPostagens helper;
-
+    static long id;
     public PostagemRepositorio(Context context){
         helper = new DBHelperPostagens(context);
     }
@@ -19,14 +19,14 @@ public class PostagemRepositorio {
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues valores = new ContentValues();
         valores.put(DBHelperPostagens.TEXTO_POSTAGENS, postagens.getTexto());
-        long id = db.insert(DBHelperPostagens.TEXTO_POSTAGENS, null, valores);
+        id = db.insert(DBHelperPostagens.TABELA_POSTAGENS, null, valores);
         db.close();
         return id;
     }
 
     public List<Postagens> buscarTodasPostagens(){
         SQLiteDatabase db = helper.getReadableDatabase();
-        String sql ="SELECT * FROM " + DBHelperPostagens.TABELA_POSTAGENS + " ORDER BY " + DBHelperPostagens.ID_POSTAGENS;
+        String sql = "Select * FROM " +DBHelperPostagens.TABELA_POSTAGENS;
         Cursor cursor = db.rawQuery(sql, null);
 
         List<Postagens> postagens = new ArrayList<>();
