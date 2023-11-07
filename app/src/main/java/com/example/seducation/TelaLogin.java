@@ -30,7 +30,7 @@ public class TelaLogin extends AppCompatActivity {
         btCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TelaLogin.this, TelaCadastro.class);
+                Intent i = new Intent(TelaLogin.this, Cadastro.class);
                 startActivity(i);
             }
         });

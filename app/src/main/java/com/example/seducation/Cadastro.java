@@ -1,8 +1,6 @@
 package com.example.seducation;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,18 +13,16 @@ import android.widget.TextView;
 import com.example.seducation.BancoDeDados.Usuario;
 import com.example.seducation.BancoDeDados.UsuarioController;
 
-public class TelaCadastro extends AppCompatActivity {
-    private EditText nomeUser ;
-    private EditText emailUser ;
-    private EditText senhaUser;
+public class Cadastro extends AppCompatActivity {
 
+
+    private EditText nomeUser, emailUser, senhaUser;
     private Button btCadastrar;
     private TextView btLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_cadastro);
-
+        setContentView(R.layout.activity_cadastro);
         nomeUser = findViewById(R.id.nome_user_cad);
         emailUser = findViewById(R.id.email_cad);
         senhaUser = findViewById(R.id.senha_cad);
@@ -36,7 +32,7 @@ public class TelaCadastro extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TelaCadastro.this, TelaLogin.class);
+                Intent i = new Intent(Cadastro.this, TelaLogin.class);
                 startActivity(i);
             }
         });
@@ -45,7 +41,7 @@ public class TelaCadastro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cadastrarUsuario();
-                Intent i = new Intent(TelaCadastro.this, TelaInicial.class);
+                Intent i = new Intent(Cadastro.this, TelaInicial.class);
                 startActivity(i);
 
             }
@@ -62,12 +58,11 @@ public class TelaCadastro extends AppCompatActivity {
         String email  = emailUser.getText().toString();
         String senha  = senhaUser.getText().toString();
         Usuario usuario = new Usuario(id, nome, email, senha);
-        UsuarioController usuarioController = UsuarioController.getInstancia(TelaCadastro.this);
+        UsuarioController usuarioController = UsuarioController.getInstancia(Cadastro.this);
         if (usuarioController.cadastrar(usuario)){
             Log.d("Gravacao", "Ok");
         }else{
             Log.d("Gravacao", "Sem Sucesso");
         }
     }
-
-}
+    }
