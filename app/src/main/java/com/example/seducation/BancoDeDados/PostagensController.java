@@ -33,8 +33,8 @@ public class PostagensController {
 
     public List<Postagens> buscarTodos(){
         PostagemRepositorio postagemRepositorio = new PostagemRepositorio(contexto);
-        List<Postagens> funcionarios = postagemRepositorio.buscarTodasPostagens();
-        return funcionarios;
+        List<Postagens> postagens = postagemRepositorio.buscarTodasPostagens();
+        return postagens;
     }
 
     public Postagens buscarPorPosicao(int posicao)
@@ -42,8 +42,5 @@ public class PostagensController {
         return postagens.get(posicao);
     }
 
-    public void atualizarLista(){
-        postagens.clear();
-        postagens.addAll(buscarTodos());
-    }
+
 }
